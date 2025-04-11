@@ -6,7 +6,7 @@
 
 using std::string;
 using std::cerr;
-using std:: exception;
+using std::vector;
 
 BerlinTestManager::BerlinTestManager() = default;
 BerlinTestManager::~BerlinTestManager() {
@@ -56,7 +56,7 @@ void BerlinTestManager::runTest(const string& name) {
   runTest(it->second);
 }
 
-void BerlinTestManager::runTest(BerlinTestWrapper* wrapper) {
+void BerlinTestManager::runTest(const BerlinTestWrapper* wrapper) {
   auto* test = wrapper->getTest();
   const string name = test->getName();
   const int count = test->getCaseCount();
@@ -71,7 +71,7 @@ void BerlinTestManager::runTest(BerlinTestWrapper* wrapper) {
       cerr << "Passed\n";
     } catch (BerlinTestFailed&) {
       ++failure_count;
-    } catch (const exception& e) {
+    } catch (const std::exception& e) {
       ++failure_count;
       cerr << "\nException: " << e.what() << "\n";
     } catch (...) {
@@ -87,4 +87,13 @@ void BerlinTestManager::printStats() const {
   cerr << "   Failed : " << failure_count << "\n";
   cerr << "   Total  : " << success_count + failure_count << "\n\n";
   cerr.flush();
+}
+
+vector<string> BerlinTestManager::getRegisteredTestNames() const {
+  vector<string> names;
+  for (const auto& [name, _] : tests) {
+    names.push_back(name);
+  }
+  std::sort(names.begin(), names.end());
+  return names;
 }

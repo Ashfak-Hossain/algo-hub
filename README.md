@@ -1,4 +1,10 @@
 # algo-hub – Competitive Programming Toolkit
+![C++](https://img.shields.io/badge/language-C++-blue)
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
+
+---
+
+A structured C++ algorithm library for competitive programming with testing, modular headers, and automation tools.
 
 ---
 
@@ -10,69 +16,26 @@
 | `test/core/`     | Test framework (Berlin-style)             |
 | `test/unit/`     | Functional unit tests                     |
 | `test/stress/`   | Stress & randomized tests                 |
-| `test/main.cpp`  | Shared test runner                        |
 | `scripts/`       | Automation scripts (build/run/generate)   |
 | `docs/`          | Internal documentation                    |
-| `debug/`         | Debug file for cp                         |
-| `CMakeLists.txt` | Config for building everything with CMake |
+| `debug/`         | CP-specific debug helpers                 |
+| `CMakeLists.txt` | CMake build setup                         |
 
 ---
 
-## Usage Testing
+## Docs
 
-### Run a Specific Unit Test
-```bash
-./scripts/unit_test.sh <TestName>
-./scripts/unit_test.sh TestBinpow
-```
+- [Unit & Stress Testing Guide](docs/usage_tests.md)
+- [Git Pre-commit Hook Setup](docs/git_hooks.md)
+- [Create New Module](docs/module_generator.md)
 
-### Run All Unit Tests
+---
+
+## Quick Start
+
 ```bash
+# Run all unit tests
 ./scripts/unit_test.sh
-```
-
-### Run a Specific Stress Test
-```bash 
-./scripts/stress_test.sh <TestName>
-```
-
-### Run All Stress Tests
-```bash
-./scripts/stress_test.sh
-```
-
----
-
-## Git Pre-commit Hook – Auto Run Unit Tests
-
-### automatically run unit tests before every git commit.
-```bash
-./scripts/bootstrap_hooks.sh
-```
-This installs a pre-commit hook into `.git/hooks/` that:
-- Builds & Runs all unit_tests
-- Aborts the commit if any test fails
-
-### Skip the hook (if needed):
-```bash
-git commit -m "fix" --no-verify
-```
-### Remove the hook:
-```bash
-rm .git/hooks/pre-commit
-```
-
----
-
-## Module Generator
-create a new module with header + test stub:
-```bash
-python3 scripts/create_module.py <category> <name>
-```
-Example:
-```bash
+# Create a new module + test
 python3 scripts/create_module.py number_theory binpow
-```
-This will create:
-- `include/number_theory/binpow.h`
-- `test/unit/binpow_test.cpp`
+````

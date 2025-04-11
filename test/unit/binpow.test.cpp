@@ -13,7 +13,7 @@ public:
   TestBinpow() : BerlinTestBase("TestBinpow") {}
 
   void run(const int case_id) override {
-    constexpr int mod = 1e9 + 7;
+    constexpr int mod = 1'000'000'007;
 
     switch (case_id) {
       case 0: check(binpow(2, 0), static_cast<int64_t>(1)); break;
@@ -31,7 +31,7 @@ public:
     }
   }
 
-  int getCaseCount() const override { return 11; }
+  [[nodiscard]] int getCaseCount() const override { return 11; }
 };
 
 BERLIN_REGISTER_TEST(TestBinpow);

@@ -18,12 +18,15 @@ class_name = f"Test{algo.capitalize()}"
 header_template = f"""
 /**
  * author: _Berlin_
- * Description: {algo} implementation
+ * Description:
+ * Verification:
+ * Source:
 **/
 
 #pragma once
 
 #include <bits/stdc++.h>
+
 using namespace std;
 
 // write your {algo} implementation here
