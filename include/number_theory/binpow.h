@@ -6,12 +6,12 @@
 
 #pragma once
 
-#include <bits/stdc++.h>
+#include <cstdint>
 
 using namespace std;
 
 // a^b without modulo
-auto binpow = [](int64_t a, int64_t b) -> int64_t {
+inline auto binpow = [](int64_t a, int64_t b) -> int64_t {
   int64_t res = 1;
   while (b) {
     if (b & 1) res *= a;
@@ -22,7 +22,7 @@ auto binpow = [](int64_t a, int64_t b) -> int64_t {
 };
 
 // a^b % m
-auto binpow_mod = [](int64_t a, int64_t b, int m) -> int64_t {
+inline auto binpow_mod = [](int64_t a, int64_t b, int m) -> int64_t {
   int64_t res = 1;
   a %= m;
   while (b) {

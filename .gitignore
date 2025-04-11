@@ -473,5 +473,6 @@ $RECYCLE.BIN/
 # personal
 playground
 .idea
+/build
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,c++,clion,clion+all,visualstudiocode,windows,linux,python
