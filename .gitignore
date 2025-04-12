@@ -474,5 +474,5 @@ $RECYCLE.BIN/
 playground
 .idea
 /build
-
+.vscode
 # End of https://www.toptal.com/developers/gitignore/api/macos,c++,clion,clion+all,visualstudiocode,windows,linux,python

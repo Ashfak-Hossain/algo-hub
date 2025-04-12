@@ -30,6 +30,9 @@ clean:
 	@echo "Cleaning up build files..."
 	@rm -rf build/
 
+# Rebuild the project (clean + build)
+rebuild: clean build
+
 # List all available unit tests
 list_tests:
 	@echo "Listing all tests..."
@@ -41,12 +44,9 @@ run_test:
 	@./build/unit_tests $(TEST_NAME)
 
 # create a algorithm module
-create_module:
+new_module:
 	@echo "Creating new module..."
 	@python3 scripts/create_module.py $(CATEGORY) $(ALGO)
-
-# Rebuild the project (clean + build)
-rebuild: clean build
 
 # Help message for Makefile commands
 help:
@@ -56,6 +56,8 @@ help:
 	@echo "  unit_tests     - Build and run unit tests"
 	@echo "  stress_tests   - Build and run stress tests"
 	@echo "  build          - Configure and compile the project"
+	@echo "  rebuild        - Clean and build the project"
+	@echo "  new_module     - Create a new algorithm module"
 	@echo "  clean          - Remove build files"
 	@echo "  list_tests     - List all registered tests"
 	@echo "  run_test       - Run a specific test (set TEST_NAME)"

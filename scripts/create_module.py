@@ -15,8 +15,7 @@ test_path = f"{test_dir}/{algo}.test.cpp"
 class_name = f"Test{algo.capitalize()}"
 
 # Template for the header file
-header_template = f"""
-/**
+header_template = f"""/**
  * author: _Berlin_
  * Description:
  * Verification:
@@ -25,16 +24,15 @@ header_template = f"""
 
 #pragma once
 
-#include <bits/stdc++.h>
+#include
 
-using namespace std;
+using ::
 
 // write your {algo} implementation here
 """
 
 # Template for the test file
-test_template = f"""
-#include "../../include/{category}/{algo}.h"
+test_template = f"""#include "../../include/{category}/{algo}.h"
 #include "../core/BerlinTestBase.h"
 #include "../core/BerlinTestRegister.h"
 
