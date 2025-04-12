@@ -8,11 +8,16 @@ if len(sys.argv) != 3:
 
 category = sys.argv[1]
 algo = sys.argv[2]
-header_dir = f"include/{category}"
-test_dir = "test/unit"
-header_path = f"{header_dir}/{algo}.h"
-test_path = f"{test_dir}/{algo}.test.cpp"
-class_name = f"Test{algo.capitalize()}"
+
+header_dir = os.path.join("include", *category.split("."))
+test_dir = os.path.join("test", "unit", *category.split("."))
+
+header_path = os.path.join(header_dir, f"{algo}.h")
+test_path = os.path.join(test_dir, f"{algo}.test.cpp")
+
+include_path = os.path.relpath(header_path, start=os.path.dirname(test_path))
+
+class_name = f"Test{algo.replace('_', ' ').title().replace(' ', '')}"
 
 # Template for the header file
 header_template = f"""/**
@@ -32,7 +37,7 @@ using std::
 """
 
 # Template for the test file
-test_template = f"""#include "../../include/{category}/{algo}.h"
+test_template = f"""#include "{include_path}"
 #include "../core/BerlinTestBase.h"
 #include "../core/BerlinTestRegister.h"
 
@@ -52,7 +57,7 @@ public:
 BERLIN_REGISTER_TEST({class_name});
 """
 
-# Create header and test directories if needed
+# Create directories if needed
 os.makedirs(header_dir, exist_ok=True)
 os.makedirs(test_dir, exist_ok=True)
 
@@ -66,6 +71,7 @@ else:
 
 # Write test file
 if not os.path.exists(test_path):
+    os.makedirs(os.path.dirname(test_path), exist_ok=True)
     with open(test_path, "w") as f:
         f.write(test_template)
     print(f"Created: {test_path}")
