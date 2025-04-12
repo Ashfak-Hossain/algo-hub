@@ -1,0 +1,39 @@
+include/
+└── number_theory/
+    ├── numeric/              # General numeric algorithms
+    │   ├── binpow.h
+    │   ├── gcd.h
+    │   ├── mod_inverse.h
+    │   ├── mod_arithmetic.h
+    │   └── extended_gcd.h
+    │
+    ├── primality/            # Primality tests and factorization
+    │   ├── is_prime.h
+    │   ├── sieve.h
+    │   ├── segmented_sieve.h
+    │   ├── pollard_rho.h
+    │   └── miller_rabin.h
+    │
+    ├── divisors/             # Divisors, multiples, factor-related functions
+    │   ├── divisors.h
+    │   ├── divisor_count.h
+    │   ├── prime_factors.h
+    │   └── num_divisors_sum.h
+    │
+    ├── modular/              # Modular arithmetic utilities
+    │   ├── modinv.h
+    │   ├── modmul.h
+    │   ├── modpow.h
+    │   └── mod_ops.h
+    │
+    ├── combinatorics/        # Binomial coefficients and modular nCr
+    │   ├── nCr.h
+    │   ├── factorials.h
+    │   ├── binomial_mod.h
+    │   └── lucas_theorem.h
+    │
+    └── misc/                 # Other cool algorithms
+        ├── phi_function.h
+        ├── mobius_function.h
+        ├── chinese_remainder.h
+        └── totient_table.h

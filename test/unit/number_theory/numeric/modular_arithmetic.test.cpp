@@ -1,6 +1,6 @@
-#include "../../include/number_theory/numeric/modular_arithmetic.h"
-#include "../core/BerlinTestBase.h"
-#include "../core/BerlinTestRegister.h"
+#include "number_theory/numeric/modular_arithmetic.h"
+#include "core/BerlinTestBase.h"
+#include "core/BerlinTestRegister.h"
 
 class TestModularArithmetic final : public BerlinTestBase {
 public:

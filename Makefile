@@ -7,10 +7,10 @@ PROJECT_NAME = algo-hub
 CXXFLAGS = -std=c++17 -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wfloat-conversion -Werror -fsanitize=address -fsanitize=undefined -g -O2
 
 # The default target (when you run 'make' without arguments)
-.DEFAULT_GOAL := rebuild
+.DEFAULT_GOAL := build
 
 # The 'unit_tests' target: Builds and runs unit tests
-unit_tests: rebuild
+unit_tests: build
 	@echo "Running unit tests..."
 	@./build/unit_tests
 
@@ -62,4 +62,10 @@ help:
 	@echo "  clean          - Remove build files"
 	@echo "  list_tests     - List all registered tests"
 	@echo "  run_test       - Run a specific test (set TEST_NAME)"
+	@echo "  quick          - Compile and run a single file (use FILE=path)"
 	@echo "  help           - Display this help message"
+
+# Quick compile a single file
+quick:
+	@echo "Quick compiling $(FILE)..."
+	@g++ $(CXXFLAGS) -o quick.out $(FILE) && ./quick.out

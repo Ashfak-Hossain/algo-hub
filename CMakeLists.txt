@@ -7,11 +7,15 @@ project(algo-hub LANGUAGES CXX)
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# Enable extra compiler warnings and sanitizer tools
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wfloat-conversion -Werror -fsanitize=undefined -fsanitize=address -g -O2")
 
 # Include Directories
 # Tell the compiler where to find #include headers
-include_directories(${CMAKE_SOURCE_DIR}/include)
-include_directories(${CMAKE_SOURCE_DIR}/test)
+include_directories(
+  ${CMAKE_SOURCE_DIR}/include
+  ${CMAKE_SOURCE_DIR}/test
+)
 
 # Collect Source Files
 file(GLOB_RECURSE CORE_TEST_SRCS test/core/*.cpp)

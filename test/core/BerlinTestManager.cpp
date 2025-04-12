@@ -1,5 +1,5 @@
 #include "BerlinTestManager.h"
-#include "BerlinTestBase.h"
+#include "core/BerlinTestBase.h"
 #include "BerlinTestWrapper.h"
 
 #include <iostream>

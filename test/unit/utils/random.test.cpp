@@ -1,6 +1,6 @@
-#include "../../include/utils/random.h"
-#include "../core/BerlinTestBase.h"
-#include "../core/BerlinTestRegister.h"
+#include "utils/random.h"
+#include "core/BerlinTestBase.h"
+#include "core/BerlinTestRegister.h"
 
 #include <unordered_set>
 

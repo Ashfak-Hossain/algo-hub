@@ -1,7 +1,7 @@
-#include "../include/number_theory/numeric/mod_inverse.h"
-#include "../core/BerlinTestBase.h"
-#include "../core/BerlinTestRegister.h"
-#include "../../include/utils/random.h" 
+#include "number_theory/numeric/mod_inverse.h"
+#include "core/BerlinTestBase.h"
+#include "core/BerlinTestRegister.h"
+#include "utils/random.h" 
 
 
 class TestModInverse final : public BerlinTestBase {

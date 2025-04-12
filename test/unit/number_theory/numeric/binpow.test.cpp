@@ -1,6 +1,6 @@
-#include "../../include/number_theory/numeric/binpow.h"
-#include "../core/BerlinTestBase.h"
-#include "../core/BerlinTestRegister.h"
+#include "number_theory/numeric/binpow.h"
+#include "core/BerlinTestBase.h"
+#include "core/BerlinTestRegister.h"
 
 class TestBinpow final : public BerlinTestBase {
 public:

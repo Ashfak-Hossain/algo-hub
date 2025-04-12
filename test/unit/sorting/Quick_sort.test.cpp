@@ -1,7 +1,7 @@
-#include "../../include/sorting/Quick_sort.h"
-#include "../core/BerlinTestBase.h"
-#include "../core/BerlinTestRegister.h"
-#include "../../include/utils/random.h"
+#include "sorting/Quick_sort.h"
+#include "core/BerlinTestBase.h"
+#include "core/BerlinTestRegister.h"
+#include "utils/random.h"
 
 #include <vector>
 #include <algorithm>

@@ -1,6 +1,6 @@
-#include "../../include/sorting/Insertion_sort.h"
-#include "../core/BerlinTestBase.h"
-#include "../core/BerlinTestRegister.h"
+#include "sorting/Insertion_sort.h"
+#include "core/BerlinTestBase.h"
+#include "core/BerlinTestRegister.h"
 
 #include <vector>
 #include <list>
