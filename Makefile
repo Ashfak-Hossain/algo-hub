@@ -10,7 +10,7 @@ CXXFLAGS = -std=c++17 -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wfloat-con
 .DEFAULT_GOAL := rebuild
 
 # The 'unit_tests' target: Builds and runs unit tests
-unit_tests: build
+unit_tests: rebuild
 	@echo "Running unit tests..."
 	@./build/unit_tests
 

@@ -1,4 +1,4 @@
-# 🔁 Git Pre-commit Hook Setup
+# Git Pre-commit Hook Setup
 
 Automatically run all unit tests before committing changes.
 
