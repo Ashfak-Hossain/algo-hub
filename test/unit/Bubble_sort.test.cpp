@@ -1,8 +1,3 @@
-/**
- * author: _Berlin_
- * Description: Unit tests for bubble sort using randomized and static vectors.
- **/
-
 #include "../../include/sorting/Bubble_sort.h"
 #include "../core/BerlinTestBase.h"
 #include "../core/BerlinTestRegister.h"

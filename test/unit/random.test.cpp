@@ -1,8 +1,3 @@
-/**
- * author:  _Berlin_
- * Description: Unit tests for utils/random.h
-**/
-
 #include "../../include/utils/random.h"
 #include "../core/BerlinTestBase.h"
 #include "../core/BerlinTestRegister.h"

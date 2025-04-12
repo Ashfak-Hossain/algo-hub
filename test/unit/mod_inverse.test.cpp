@@ -1,7 +1,3 @@
-/**
- * author: _Berlin_
- * Description: Test file for modular inverse using Fermat's Theorem
- */
 #include "../../include/number_theory/mod_inverse.h"
 #include "../core/BerlinTestBase.h"
 #include "../core/BerlinTestRegister.h"

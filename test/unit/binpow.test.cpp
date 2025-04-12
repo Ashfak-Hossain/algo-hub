@@ -1,9 +1,3 @@
-/**
- * author: _Berlin_
- * Description: Test suite for binpow and binpow_mod
- * Purpose: Verify correctness across small and large values
-**/
-
 #include "../../include/number_theory/binpow.h"
 #include "../core/BerlinTestBase.h"
 #include "../core/BerlinTestRegister.h"
