@@ -4,7 +4,7 @@
  * Verification: Tested with unit tests.
  * Complexity: O(n log n) on average, O(n^2) in the worst case.
  * Space Complexity: O(log n) for recursion stack.
- * Source: Custom implementation.
+ * Source: own implementation.
  **/
 
 #pragma once

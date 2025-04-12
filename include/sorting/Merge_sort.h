@@ -3,7 +3,7 @@
  * Description: A recursive implementation of merge sort for sorting containers with random-access iterators.
  * Verification: Tested with unit tests.
  * Complexity: O(n log n) time complexity, O(n) auxiliary space.
- * Source: Custom implementation.
+ * Source: own implementation.
  **/
 
 #pragma once

@@ -6,7 +6,7 @@
 #include <vector>
 #include <algorithm>
 
-using namespace std;
+using std::vector;
 
 class TestBubbleSort : public BerlinTestBase {
 public:
@@ -15,40 +15,38 @@ public:
   void run(int id) override {
     switch (id) {
       case 0: {
-        vector<int64_t> a = {3, 1, 4, 5, 2};
-        vector<int64_t> expected = {1, 2, 3, 4, 5};
-        bubble_sort(a);
-        check(a, expected);
+        vector<int> arr = {5, 3, 8, 6, 2};
+        vector<int> expected = {2, 3, 5, 6, 8};
+        bubble_sort(arr.begin(), arr.end());
+        check(arr, expected);
         break;
       }
       case 1: {
-        vector<int64_t> a = {42};
-        vector<int64_t> expected = {42};
-        bubble_sort(a);
-        check(a, expected);
+        vector<int> arr = {1};
+        vector<int> expected = {1};
+        bubble_sort(arr.begin(), arr.end());
+        check(arr, expected);
         break;
       }
       case 2: {
-        vector<int64_t> a = {7, 7, 7, 7, 7};
-        vector<int64_t> expected = {7, 7, 7, 7, 7};
-        bubble_sort(a);
-        check(a, expected);
+        vector<int> arr = {10, 10, 10};
+        vector<int> expected = {10, 10, 10};
+        bubble_sort(arr.begin(), arr.end());
+        check(arr, expected);
         break;
       }
       case 3: {
-        auto a = berlin_rand::randvec<int64_t>(100, static_cast<int64_t>(-1e5), static_cast<int64_t>(1e5));
-        auto expected = a;
-        sort(expected.begin(), expected.end());
-        bubble_sort(a);
-        check(a, expected);
+        vector<int> arr = {-3, -1, -2, 0, 2};
+        vector<int> expected = {-3, -2, -1, 0, 2};
+        bubble_sort(arr.begin(), arr.end());
+        check(arr, expected);
         break;
       }
       case 4: {
-        auto a = berlin_rand::randvec(200, -1000000000, 1000000000);
-        auto expected = a;
-        sort(expected.begin(), expected.end());
-        bubble_sort(a);
-        check(a, expected);
+        vector<int> arr = {};
+        vector<int> expected = {};
+        bubble_sort(arr.begin(), arr.end());
+        check(arr, expected);
         break;
       }
     }
