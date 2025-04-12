@@ -24,9 +24,9 @@ header_template = f"""/**
 
 #pragma once
 
-#include
+#include <>
 
-using ::
+using std::
 
 // write your {algo} implementation here
 """
