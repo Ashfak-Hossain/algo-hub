@@ -38,8 +38,8 @@ using std::
 
 # Template for the test file
 test_template = f"""#include "{include_path}"
-#include "../core/BerlinTestBase.h"
-#include "../core/BerlinTestRegister.h"
+#include "core/BerlinTestBase.h"
+#include "core/BerlinTestRegister.h"
 
 class {class_name} : public BerlinTestBase {{
 public:
