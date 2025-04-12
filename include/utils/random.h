@@ -12,6 +12,7 @@
 #include <vector>
 #include <unordered_set>
 #include <algorithm>
+#include <type_traits>
 
 using std::vector;
 
@@ -30,59 +31,68 @@ namespace berlin_rand {
     return x;
   }
 
-  // random int in [l, r]
-  inline int64_t randint(int64_t l, int64_t r) {
-    assert(l <= r);
-    return l + rng() % uint64_t(r - l + 1);
-  }
-
-  // random int in [l, r)
-  inline int64_t randrange(int64_t l, int64_t r) {
-    assert(l < r);
-    return l + rng() % uint64_t(r - l);
-  }
-
   // [0.0, 1.0)
   inline double rand01() {
     return rng() * 5.42101086242752217004e-20; // 1 / 2^64
   }
 
+  // random integer in [l, r]
+  template <typename T>
+  inline T randint(T l, T r) {
+    static_assert(std::is_integral<T>::value, "randint requires integral types");
+    assert(l <= r);
+    return l + T(rng() % uint64_t(r - l + 1));
+  }
+
+  // random integer in [l, r)
+  template <typename T>
+  inline T randrange(T l, T r) {
+    static_assert(std::is_integral<T>::value, "randrange requires integral types");
+    assert(l < r);
+    return l + T(rng() % uint64_t(r - l));
+  }
+
   // real in [l, r)
-  inline double randreal(double l, double r) {
+  template <typename T>
+  inline T randreal(T l, T r) {
+    static_assert(std::is_floating_point<T>::value, "randreal requires floating-point types");
     assert(l < r);
     return l + rand01() * (r - l);
   }
 
+  // generate vector of n random integers in [l, r]
+  template <typename T>
+  inline vector<T> randvec(int n, T l, T r) {
+    static_assert(std::is_integral<T>::value, "randvec requires integral types");
+    assert(n >= 0 && l <= r);
+    vector<T> res(n);
+    for (int i = 0; i < n; i++) res[i] = randint(l, r);
+    return res;
+  }
+
   // n distinct values in [l, r)
-  inline vector<int64_t> randset(int64_t l, int64_t r, int64_t n) {
+  template <typename T>
+  inline vector<T> randset(T l, T r, int64_t n) {
+    static_assert(std::is_integral<T>::value, "randset requires integral types");
     assert(n <= r - l);
-    std::unordered_set<int64_t> s;
-    vector<int64_t> res;
+    std::unordered_set<T> s;
+    vector<T> res;
     while ((int)res.size() < n) {
-      int64_t x = randrange(l, r);
+      T x = randrange(l, r);
       if (!s.count(x)) s.insert(x), res.push_back(x);
     }
     std::sort(res.begin(), res.end());
     return res;
   }
 
-  // fisher-yates shuffle
+  // shuffle vector in place
   template <typename T>
   void randshuffle(vector<T>& v) {
     size_t n = v.size();
     for (size_t i = 1; i < n; i++) {
-      size_t j = randint(0, i);
+      size_t j = randint<size_t>(0, i);
       std::swap(v[i], v[j]);
     }
-  }
-
-  // generate vector of n random ints in [l, r]
-  inline vector<int64_t> randvec(int n, int64_t l, int64_t r) {
-    assert(n >= 0 && l <= r);
-    vector<int64_t> res(n);
-    for (int i = 0; i < n; i++)
-      res[i] = randint(l, r);
-    return res;
   }
 }
 
@@ -92,3 +102,4 @@ using berlin_rand::randrange;
 using berlin_rand::randreal;
 using berlin_rand::randset;
 using berlin_rand::randshuffle;
+using berlin_rand::randvec;

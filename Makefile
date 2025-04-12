@@ -39,10 +39,11 @@ list_tests:
 	@./build/unit_tests --list
 
 # Run a specific test
-run_test:
-	@echo "Running specified test: $(TEST_NAME)"
-	@./build/unit_tests $(TEST_NAME)
-
+run_utest:
+	@echo "Running unit test: $(TEST_NAME)"
+	@./scripts/unit_test.sh $(TEST_NAME)
+	@echo "Test $(TEST_NAME) completed."
+	
 # create a algorithm module
 new_module:
 	@echo "Creating new module..."

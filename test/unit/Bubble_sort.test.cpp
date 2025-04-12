@@ -41,7 +41,7 @@ public:
         break;
       }
       case 3: {
-        auto a = berlin_rand::randvec(100, -1e5, 1e5);
+        auto a = berlin_rand::randvec<int64_t>(100, static_cast<int64_t>(-1e5), static_cast<int64_t>(1e5));
         auto expected = a;
         sort(expected.begin(), expected.end());
         bubble_sort(a);
@@ -49,7 +49,7 @@ public:
         break;
       }
       case 4: {
-        auto a = berlin_rand::randvec(200, -1e9, 1e9);
+        auto a = berlin_rand::randvec(200, -1000000000, 1000000000);
         auto expected = a;
         sort(expected.begin(), expected.end());
         bubble_sort(a);
