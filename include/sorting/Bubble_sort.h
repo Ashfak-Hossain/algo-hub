@@ -1,7 +1,9 @@
 /**
  * author: _Berlin_
- * Description: Bubble Sort
+ * Description: Bubble Sort Algorithm 
  * Verification: Verified with unit tests on various integer vectors
+ * Time Complexity: O(n^2) in the worst case, O(n) in the best case
+ * Space Complexity: O(1)
  * Source: own
 **/
 
@@ -27,21 +29,3 @@ void bubble_sort(vector<T>& v) {
     if (!didSwap) break;
   }
 }
-
-/**
-Bubble Sort Algorithm
-
-Time Complexity:
-- Best Case: O(n)
-  - When the array is already sorted, the algorithm makes a single pass with no swaps.
-
-- Average Case: O(n^2)
-  - On average, the number of comparisons is proportional to n(n-1)/2.
-
-- Worst Case: O(n^2)
-  - When the array is sorted in reverse order, the algorithm performs n(n-1)/2 comparisons.
-
-Space Complexity:
-- O(1)
-  - Only a constant amount of additional memory is used.
-**/
