@@ -8,8 +8,6 @@
 
 #include <cstdint>
 
-using namespace std;
-
 // a^b without modulo
 inline auto binpow = [](int64_t a, int64_t b) -> int64_t {
   int64_t res = 1;

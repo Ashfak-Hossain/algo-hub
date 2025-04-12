@@ -25,7 +25,7 @@ inline auto mod_mul = [](int64_t a, int64_t b, int m) -> int64_t {
 };
 
 // (a * b) % m using binary method to prevent overflow (O(log b))
-inline auto modMul = [] (int64_t a, int64_t b, int64_t m) -> int64_t {
+inline auto modMul = [] (int64_t a, int64_t b, int m) -> int64_t {
   int64_t result = 0;
   a %= m;
   while (b > 0) {
@@ -36,8 +36,14 @@ inline auto modMul = [] (int64_t a, int64_t b, int64_t m) -> int64_t {
   return result;
 };
 
+
+// (a * b) % m using __int128
+inline auto mod_mul128 = [] (int64_t a, int64_t b, int m) -> int64_t {
+  return (int64_t)((__int128)a * b % m);
+};
+
 // (a * b) % m using floating-point trick (fast, ~2x faster than __int128)
-inline auto modmul = [] (uint64_t a, uint64_t b, uint64_t mod) -> int64_t {
+inline auto modmul = [] (uint64_t a, uint64_t b, int mod) -> int64_t {
   int64_t res = a * b - mod * uint64_t(1.L / mod * a * b);
   if (res < 0) res += mod;
   if (res >= (int64_t)mod) res -= mod;
