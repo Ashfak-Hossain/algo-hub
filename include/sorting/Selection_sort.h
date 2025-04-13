@@ -8,7 +8,6 @@
 
 #pragma once
 
-#include <iterator>
 #include <algorithm>
 
 template <typename RandomIt>

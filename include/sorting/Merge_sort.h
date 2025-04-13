@@ -9,8 +9,6 @@
 #pragma once
 
 #include <vector>
-#include <iterator>
-#include <algorithm>
 
 using std::vector;
 

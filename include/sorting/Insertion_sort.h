@@ -10,7 +10,6 @@
 #pragma once
 
 #include <iterator>
-#include <utility>
 
 template <typename RandomIt>
 void insertion_sort(RandomIt begin, RandomIt end) {

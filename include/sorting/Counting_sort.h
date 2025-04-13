@@ -10,7 +10,6 @@
 #pragma once
 
 #include <vector>
-#include <algorithm>
 #include <cassert>
 
 template <typename T>

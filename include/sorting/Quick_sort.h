@@ -10,7 +10,6 @@
 #pragma once
 
 #include <iterator>
-#include <utility>
 #include <algorithm>
 
 template <typename RandomIt>
@@ -34,5 +33,5 @@ void quick_sort(RandomIt begin, RandomIt end) {
 
   auto pivot = partition(begin, end); 
   quick_sort(begin, pivot);           
-  quick_sort(std::next(pivot), end);  
+  quick_sort(std::next(pivot), end);
 }
