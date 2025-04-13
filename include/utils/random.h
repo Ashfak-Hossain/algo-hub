@@ -33,7 +33,7 @@ namespace berlin_rand {
 
   // [0.0, 1.0)
   inline double rand01() {
-    return rng() * 5.42101086242752217004e-20; // 1 / 2^64
+    return static_cast<double>(rng()) * 5.42101086242752217004e-20; // 1 / 2^64
   }
 
   // random integer in [l, r]
