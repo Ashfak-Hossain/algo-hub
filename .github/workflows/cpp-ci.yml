@@ -1,10 +1,10 @@
-name: C++ CI with CMake and Matrix
+name: C++ CI
 
 on:
   push:
-    branches: ["master"]
+    branches: ['master']
   pull_request:
-    branches: ["master"]
+    branches: ['master']
 
 jobs:
   build-and-test:
@@ -13,17 +13,24 @@ jobs:
     strategy:
       matrix:
         build_type: [Debug, Release]
-        test_target: [unit_tests]  # Add stress_tests here later: [unit_tests, stress_tests]
+        test_target: [unit_tests] # Add stress_tests here later: [unit_tests, stress_tests]
 
     env:
       BUILD_TYPE: ${{ matrix.build_type }}
       TEST_TARGET: ${{ matrix.test_target }}
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Configure CMake (${{ env.BUILD_TYPE }})
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
+
+      - name: Simulate Pre-commit hook
+        run: |
+          echo "Running simulated pre-commit..."
+          chmod +x ./scripts/unit_test.sh
+          ./scripts/unit_test.sh
 
       - name: Build target (${{ env.TEST_TARGET }})
         run: cmake --build build --target ${{ env.TEST_TARGET }}
