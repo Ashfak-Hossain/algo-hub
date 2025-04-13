@@ -24,7 +24,7 @@ public:
       case 7: check(mod_sub<int64_t>(big, big, mod), int64_t(0)); break;
 
       // mod_mul
-      case 8: check(mod_mul<int64_t>(123, 456, mod), (123LL * 456LL) % mod); break;
+      case 8: check(mod_mul<int64_t>(123, 456, mod), int64_t((123LL * 456LL) % mod)); break;
       case 9: check(mod_mul<int64_t>(big, big, mod), (big % mod * big % mod) % mod); break;
       case 10: check(mod_mul<int64_t>(0, big, mod), int64_t(0)); break;
 
@@ -34,10 +34,10 @@ public:
 
       // mod_mul_fp
       case 13: check(mod_mul_fp<int64_t>(big, big, mod), (big % mod * big % mod) % mod); break;
-      case 14: check(mod_mul_fp<int64_t>(1e18, 2, mod), int64_t(((__int128)1e18 * 2) % mod)); break;
+      case 14: check(mod_mul_fp<int64_t>(1e18, 2, mod), mod_mul<int64_t>(1e18, 2, mod)); break;
 
       // mod_mul128
-      case 15: check(mod_mul128<int64_t>(big, big, mod), int64_t(((__int128)big * big) % mod)); break;
+      case 15: check(mod_mul128<int64_t>(big, big, mod), mod_mul<int64_t>(big, big, mod)); break;
       case 16: check(mod_mul128<int64_t>(0, big, mod), int64_t(0)); break;
 
       // mod_div
