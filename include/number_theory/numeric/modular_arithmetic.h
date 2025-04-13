@@ -2,7 +2,7 @@
  * author:  _Berlin_
  * Description: Modular arithmetic operations (addition, subtraction, multiplication, division).
  * Complexity: O(1) for addition, subtraction, and multiplication. O(log m) for division.
- * Source: modmul - https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModMulLL.h
+ * Source: mod_mul_fp - https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModMulLL.h
 **/
 
 #pragma once
@@ -43,22 +43,16 @@ T mod_mul_bin(T a, T b, T m) {
 // (a * b) % m using __int128 (for large values, requires compiler support)
 template <typename T>
 T mod_mul128(T a, T b, T m) {
-#ifdef __SIZEOF_INT128__
-  return static_cast<T>((__int128)a * b % m);
-#else
-  static_assert(sizeof(T) < 8, "mod_mul128 requires __int128 support on this platform.");
-  return T(); // fallback
-#endif
+  return static_cast<T>( __int128(a) * __int128(b) % m);
 }
 
 // (a * b) % m using floating-point trick (fast, ~2x faster than __int128)
 template <typename T>
 T mod_mul_fp(T a, T b, T m) {
-  long double res = static_cast<long double>(a) * b - m * static_cast<long double>(1.L / m * a * b);
-  T result = static_cast<T>(res);
+  long double res = static_cast<long double>(a) * b / m;
+  T result = static_cast<T>(a * b - static_cast<T>(res) * m);
   if (result < 0) result += m;
-  if (result >= m) result -= m;
-  return result;
+  return result % m;
 }
 
 // (a / b) % m using Fermat's little theorem (b must be coprime to m)

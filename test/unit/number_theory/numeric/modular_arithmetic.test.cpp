@@ -34,7 +34,7 @@ public:
 
       // mod_mul_fp
       case 13: check(mod_mul_fp<int64_t>(big, big, mod), (big % mod * big % mod) % mod); break;
-      case 14: check(mod_mul_fp<int64_t>(1e18, 2, mod), mod_mul<int64_t>(1e18, 2, mod)); break;
+      case 14: check(mod_mul_fp<int64_t>(1000000000000000000, 2, mod), mod_mul<int64_t>(1000000000000000000, 2, mod)); break;
 
       // mod_mul128
       case 15: check(mod_mul128<int64_t>(big, big, mod), mod_mul<int64_t>(big, big, mod)); break;
