@@ -3,6 +3,7 @@
 #include "BerlinTestWrapper.h"
 
 #include <iostream>
+#include <algorithm>
 
 using std::string;
 using std::cerr;
