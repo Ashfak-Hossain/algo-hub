@@ -471,8 +471,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # misc
-playground
+/playground
 .idea
 /build
 .vscode
-misc.txt
