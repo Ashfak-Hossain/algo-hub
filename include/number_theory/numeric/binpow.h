@@ -1,22 +1,21 @@
 /**
-  * author:  _Berlin_
-  * Description: Binary exponentiation with and without modulo in O(log b).
-  * Supports generic numeric types using templates.
-  * Usage:
-  *  - binpow(a, b) for a^b
-  *  - binpow_mod(a, b, m) for a^b % m 
-  * Time complexity: O(log b)
-  * Space complexity: O(1)
-  * Verification: https://cses.fi/problemset/result/12609808/
-**/
+ * author:  _Berlin_
+ * Description: Binary exponentiation with and without modulo in O(log b).
+ * Supports generic numeric types using templates.
+ * Usage:
+ *  - binpow(a, b) for a^b
+ *  - binpow_mod(a, b, m) for a^b % m
+ * Time complexity: O(log b)
+ * Space complexity: O(1)
+ * Verification: https://cses.fi/problemset/result/12609808/
+ **/
 
 #pragma once
 
 #include <type_traits>
 
 // a^b without modulo
-template <typename T>
-T binpow(T a, T b) {
+template <typename T> T binpow(T a, T b) {
   static_assert(std::is_arithmetic_v<T>);
   T res = 1;
   while (b > 0) {
@@ -28,8 +27,7 @@ T binpow(T a, T b) {
 }
 
 // a^b % m
-template <typename T>
-T binpow_mod(T a, T b, T m) {
+template <typename T> T binpow_mod(T a, T b, T m) {
   static_assert(std::is_integral_v<T>);
   T res = 1;
   a %= m;
