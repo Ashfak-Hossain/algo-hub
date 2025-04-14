@@ -106,18 +106,19 @@
 
 ## Stash
 
-| Command                   | Description                             |
-|---------------------------|-----------------------------------------|
-| `git stash`               | Save local changes temporarily          |
-| `git stash list`          | View list of stashes                    |
-| `git stash pop`           | Reapply last stash and remove it        |
-| `git stash apply`         | Reapply last stash without deleting it  |
-| `git stash drop`          | Delete the most recent stash            |
-| `git stash clear`         | Remove all stashes                      |
-| `git stash show`          | Show changes in the last stash          |
-| `git stash show -p`       | Show detailed changes in the last stash |
-| `git stash branch <name>` | Create a new branch from a stash        |
-| `git stash apply <stash>` | Apply a specific stash                  |
+| Command                   | Description                                  |
+|---------------------------|----------------------------------------------|
+| `git stash`               | Save local changes temporarily               |
+| `git stash push -U`       | Save local changes including untracked files |
+| `git stash list`          | View list of stashes                         |
+| `git stash pop`           | Reapply last stash and remove it             |
+| `git stash apply`         | Reapply last stash without deleting it       |
+| `git stash drop`          | Delete the most recent stash                 |
+| `git stash clear`         | Remove all stashes                           |
+| `git stash show`          | Show changes in the last stash               |
+| `git stash show -p`       | Show detailed changes in the last stash      |
+| `git stash branch <name>` | Create a new branch from a stash             |
+| `git stash apply <stash>` | Apply a specific stash                       |
 
 _Use git stash to temporarily save changes that aren’t yet ready to be committed — useful when switching branches or testing something else._
 

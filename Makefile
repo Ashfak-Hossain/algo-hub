@@ -1,71 +1,104 @@
 # --- Makefile for algo-hub CP Toolkit ---
 
-# Project name
+# =========== Configuration =========== 
 PROJECT_NAME = algo-hub
-
-# C++ flags for compiling
+CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wfloat-conversion -Werror -fsanitize=address -fsanitize=undefined -g -O2
-
-# The default target (when you run 'make' without arguments)
+BUILD_DIR = build
+SRC_DIR = .
+UNIT_TEST_SCRIPT = ./scripts/unit_test.sh
+STRESS_TEST_SCRIPT = ./scripts/stress_test.sh
 .DEFAULT_GOAL := build
 
-# The 'unit_tests' target: Builds and runs unit tests
-unit_tests: build
-	@echo "Running unit tests..."
-	@./build/unit_tests
 
-# The 'stress_tests' target: Builds and runs stress tests
-stress_tests: build
-	@echo "Running stress tests..."
-	@./build/stress_tests
 
-# The 'build' target: Configures the project and compiles the code
+
+# =========== High Level Targets ===========
+
+# Build the full project
 build:
 	@echo "Building project..."
-	@cmake -S . -B build
-	@cmake --build build
+	@cmake -S $(SRC_DIR) -B $(BUILD_DIR)
+	@cmake --build $(BUILD_DIR)
 
-# Clean up build files (use 'make clean' to remove build files)
+# Clean build artifacts
 clean:
 	@echo "Cleaning up build files..."
-	@rm -rf build/
+	@rm -rf $(BUILD_DIR)/
 
-# Rebuild the project (clean + build)
+# Clean and build from scratch
 rebuild: clean build
 
-# List all available unit tests
+
+
+
+# ======= TEST TARGETS =======
+
+unit_tests: build
+	@echo "Running unit tests..."
+	@./$(BUILD_DIR)/unit_tests
+
+stress_tests: build
+	@echo "Running stress tests..."
+	@./$(BUILD_DIR)/stress_tests
+
+# List all available unit test cases
 list_tests:
 	@echo "Listing all tests..."
-	@./build/unit_tests --list
+	@./$(BUILD_DIR)/unit_tests --list
 
-# Run a specific test
+# Run a specific unit test
 run_utest:
 	@echo "Running unit test: $(TEST_NAME)"
-	@./scripts/unit_test.sh $(TEST_NAME)
+	@$(UNIT_TEST_SCRIPT) $(TEST_NAME)
 	@echo "Test $(TEST_NAME) completed."
-	
-# create a algorithm module
+
+
+
+
+# ======= MODULE GENERATION =======
+
+# Generate new module
 new_module:
 	@echo "Creating new module..."
 	@python3 scripts/create_module.py $(CATEGORY) $(ALGO)
 
-# Help message for Makefile commands
-help:
-	@echo "Usage: make <target>"
-	@echo ""
-	@echo "Targets:"
-	@echo "  unit_tests     - Build and run unit tests"
-	@echo "  stress_tests   - Build and run stress tests"
-	@echo "  build          - Configure and compile the project"
-	@echo "  rebuild        - Clean and build the project"
-	@echo "  new_module     - Create a new algorithm module"
-	@echo "  clean          - Remove build files"
-	@echo "  list_tests     - List all registered tests"
-	@echo "  run_test       - Run a specific test (set TEST_NAME)"
-	@echo "  quick          - Compile and run a single file (use FILE=path)"
-	@echo "  help           - Display this help message"
 
-# Quick compile a single file
+
+
+# ======= QUICK COMPILE & RUN =======
+
+# Compile and run a single file quickly (no full rebuild)
 quick:
-	@echo "Quick compiling $(FILE)..."
-	@g++ $(CXXFLAGS) -o quick.out $(FILE) && ./quick.out
+	@echo "Quick compile: $(FILE)"
+	@if [ -z "$(FILE)" ]; then \
+		echo "Error: FILE variable is not set. Use FILE=... to specify the file to compile."; \
+		echo "Example: make quick FILE=path/to/your/file.cpp"; \
+		exit 1; \
+	fi
+	$(CXX) $(CXXFLAGS) -std=c++20 \
+		-Iinclude -Itest \
+		test/core/BerlinTestManager.cpp test/main.cpp $(FILE) \
+		-o quick.out && ./quick.out
+
+
+# ======= HELP =======
+
+help:
+	@echo ""
+	@echo "Makefile Commands:"
+	@echo ""
+	@echo "  build           - Configure and compile the full project"
+	@echo "  rebuild         - Clean and recompile the project"
+	@echo "  clean           - Remove build directory"
+	@echo ""
+	@echo "  unit_tests      - Build and run all unit tests"
+	@echo "  stress_tests    - Build and run stress tests"
+	@echo "  run_utest       - Run a specific test (use TEST_NAME=...)"
+	@echo "  list_tests      - List all registered tests"
+	@echo ""
+	@echo "  new_module      - Create a new algorithm module (CATEGORY=... ALGO=...)"
+	@echo ""
+	@echo "  quick           - Compile and run a standalone file (use FILE=...)"
+	@echo ""
+	@echo "  help            - Show this help message"
