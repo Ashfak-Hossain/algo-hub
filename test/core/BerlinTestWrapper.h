@@ -10,10 +10,10 @@ public:
   }
 
   ~BerlinTestWrapper() {
-    if (test_ptr) delete test_ptr;
+    delete test_ptr;
   }
 
-  BerlinTestBase* getTest() const {
+  [[nodiscard]] BerlinTestBase* getTest() const {
     return test_ptr;
   }
 

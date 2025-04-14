@@ -14,9 +14,9 @@ public:
   TestModInverse() : BerlinTestBase("TestModInverse") {}
 
   void run(const int case_id) override {
-    srand(42);  
+    srand(42);
     constexpr int mod = 1'000'000'007;
-    constexpr int64_t non_prime_mod = 1'000'000'006; 
+    constexpr int64_t non_prime_mod = 1'000'000'006;
 
     switch (case_id) {
       case 0:
@@ -32,7 +32,7 @@ public:
         check(mod_inv_fermat<int64_t>(10, mod), int64_t(700000005));
         break;
       case 4: {
-        if (!is_prime<int64_t>(non_prime_mod)) {
+        if constexpr (!is_prime<int64_t>(non_prime_mod)) {
           check(true, true, "Skipping test: non_prime_mod is not prime.");
           break;
         }
@@ -48,19 +48,19 @@ public:
         break;
       }
       case 6: {
-        const int64_t a = 1'000'000'000;
+        constexpr int64_t a = 1'000'000'000;
         const auto inv = mod_inv_fermat<int64_t>(a, mod);
         check((a * inv) % mod, int64_t(1));
         break;
       }
       case 7: {
-        const int64_t a = 999999999;
+        constexpr int64_t a = 999999999;
         const auto inv = mod_inv_fermat<int64_t>(a, mod);
         check((a * inv) % mod, int64_t(1));
         break;
       }
       case 8: {
-        const int64_t a = 1'000'000'006;
+        constexpr int64_t a = 1'000'000'006;
         const auto inv = mod_inv_fermat<int64_t>(a, mod);
         check((a * inv) % mod, int64_t(1));
         break;

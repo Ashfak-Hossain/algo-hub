@@ -1,6 +1,6 @@
 /**
  * author: _Berlin_
- * Description: A simple implementation of selection sort for sorting containers with random-access iterators.
+ * Description: A simple implementation of selection sort for sorting containers.
  * Verification: Tested with unit tests.
  * Complexity: O(n^2) time complexity, O(1) space complexity.
  * Source: own implementation.

@@ -11,16 +11,16 @@ class BerlinTestFailed {};
 
 class BerlinTestBase {
 public:
-  explicit BerlinTestBase(const string& test_name) : name(test_name) {}
-  virtual ~BerlinTestBase() {}
+  explicit BerlinTestBase(string  test_name) : name(std::move(test_name)) {}
+  virtual ~BerlinTestBase() = default;
 
   // Subclasses override this to write their test logic
   virtual void run(int case_id) = 0;
 
   // Can run multiple subcases: override if needed
-  virtual int getCaseCount() const { return 1; }
+  [[nodiscard]] virtual int getCaseCount() const { return 1; }
 
-  string getName() const { return name; }
+  [[nodiscard]] string getName() const { return name; }
 
 protected:
   // Check if two values are equal

@@ -4,12 +4,11 @@
 
 #include <vector>
 #include <list>
-#include <algorithm>
 
 using std::vector;
 using std::list;
 
-class TestInsertionSort : public BerlinTestBase {
+class TestInsertionSort final : public BerlinTestBase {
 public:
   TestInsertionSort() : BerlinTestBase("TestInsertionSort") {}
 
@@ -50,6 +49,7 @@ public:
         check(arr, expected);
         break;
       }
+      default: ;
     }
   }
 

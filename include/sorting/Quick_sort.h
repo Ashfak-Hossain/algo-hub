@@ -29,8 +29,7 @@ RandomIt partition(RandomIt begin, RandomIt end) {
 
 template <typename RandomIt>
 void quick_sort(RandomIt begin, RandomIt end) {
-  if (std::distance(begin, end) <= 1) return; 
-
+  if (std::distance(begin, end) <= 1) return;
   auto pivot = partition(begin, end); 
   quick_sort(begin, pivot);           
   quick_sort(std::next(pivot), end);

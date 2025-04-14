@@ -1,14 +1,12 @@
 #include "sorting/Counting_sort.h"
 #include "core/BerlinTestBase.h"
 #include "core/BerlinTestRegister.h"
-#include "utils/random.h"
 
 #include <vector>
-#include <algorithm>
 
 using std::vector;
 
-class TestCountingSort : public BerlinTestBase {
+class TestCountingSort final : public BerlinTestBase {
 public:
   TestCountingSort() : BerlinTestBase("TestCountingSort") {}
 
@@ -49,6 +47,7 @@ public:
         check(arr, expected);
         break;
       }
+      default: ;
     }
   }
 

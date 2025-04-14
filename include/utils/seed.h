@@ -6,7 +6,7 @@
  #pragma once
 
  #include <chrono>
- 
+
 namespace berlin_internal {
   // Non-deterministic seed using high-precision clock
   inline uint64_t time_seed() {
@@ -26,9 +26,9 @@ namespace berlin_internal {
   // Seed selector based on debug flags
   inline uint64_t get_seed() {
     #if defined(BERLIN_LOCAL) && !defined(USE_RANDOM_SEED)
-    return fixed_seed(); 
+    return fixed_seed();
     #else
-    return time_seed();  
+    return time_seed();
     #endif
-  }   
+  }
 }

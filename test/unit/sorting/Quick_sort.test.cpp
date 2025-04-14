@@ -9,11 +9,11 @@
 using std::vector;
 using std::sort;
 
-class TestQuickSort : public BerlinTestBase {
+class TestQuickSort final : public BerlinTestBase {
 public:
   TestQuickSort() : BerlinTestBase("TestQuickSort") {}
 
-  void run(int id) override {
+  void run(const int id) override {
     switch (id) {
       case 0: {
         vector<int> arr = {5, 3, 8, 6, 2};
@@ -50,18 +50,19 @@ public:
         check(arr, expected);
         break;
       }
-      case 5: { 
-        auto arr = berlin_rand::randvec<int>(100, -1000, 1000); 
+      case 5: {
+        auto arr = berlin_rand::randvec<int>(100, -1000, 1000);
         auto expected = arr;
         sort(expected.begin(), expected.end());
         quick_sort(arr.begin(), arr.end());
         check(arr, expected);
         break;
       }
+      default: ;
     }
   }
 
-  int getCaseCount() const override { return 6; } 
+  int getCaseCount() const override { return 6; }
 };
 
 BERLIN_REGISTER_TEST(TestQuickSort);
