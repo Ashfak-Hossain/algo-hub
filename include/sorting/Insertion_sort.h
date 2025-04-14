@@ -1,6 +1,6 @@
 /**
  * author: _Berlin_
- * Description: A unique implementation of insertion sort using iterators for flexibility.
+ * Description: A unique implementation of insertion sort
  * Verification: Tested with unit tests.
  * Complexity: O(n^2) in the worst case, O(n) in the best case.
  * Space complexity: O(1) auxiliary space.

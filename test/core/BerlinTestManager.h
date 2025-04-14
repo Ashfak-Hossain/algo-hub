@@ -20,7 +20,7 @@ public:
   void reportCheckFailure(const string& got, const string& expected, const string& msg = "");
   void reportFailure(const string& msg = "");
 
-  std::vector<string> getRegisteredTestNames() const;
+  [[nodiscard]] std::vector<string> getRegisteredTestNames() const;
 
 private:
   BerlinTestManager();

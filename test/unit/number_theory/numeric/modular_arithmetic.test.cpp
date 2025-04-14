@@ -6,7 +6,7 @@ class TestModularArithmetic final : public BerlinTestBase {
 public:
   TestModularArithmetic() : BerlinTestBase("TestModularArithmetic") {}
 
-  void run(int id) override {
+  void run(const int id) override {
     constexpr int64_t mod = 1'000'000'007;
     constexpr int64_t big = 1'000'000'006LL; // Close to mod
 

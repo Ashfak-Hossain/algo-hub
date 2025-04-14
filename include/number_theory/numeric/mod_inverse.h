@@ -9,9 +9,9 @@
 
 #include "binpow.h"
 
-// Fermat's inverse: a^(m-2) % m, valid when m is prime
+// Fermat's inverse: a^(m-2) % m, valid when m is ** prime **
 template <typename T>
 T mod_inv_fermat(T a, T mod) {
-  static_assert(std::is_integral<T>::value);
+  static_assert(std::is_integral_v<T>);
   return binpow_mod(a, mod - 2, mod);
 }

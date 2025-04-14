@@ -9,11 +9,11 @@
 using std::vector;
 using std::sort;
 
-class TestSelectionSort : public BerlinTestBase {
+class TestSelectionSort final : public BerlinTestBase {
 public:
   TestSelectionSort() : BerlinTestBase("TestSelectionSort") {}
 
-  void run(int id) override {
+  void run(const int id) override {
     switch (id) {
       case 0: {
         vector<int> arr = {5, 3, 8, 6, 2};
@@ -58,6 +58,7 @@ public:
         check(arr, expected);
         break;
       }
+      default: ;
     }
   }
 
