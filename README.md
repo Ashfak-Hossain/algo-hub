@@ -1,6 +1,7 @@
 # algo-hub – Competitive Programming Toolkit
 ![C++](https://img.shields.io/badge/language-C++-blue)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
+![SavePalestine](https://raw.githubusercontent.com/OneDroid/.github/refs/heads/main/images/badge/save-palestine.svg)
 
 ---
 
